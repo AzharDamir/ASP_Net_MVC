@@ -1,0 +1,64 @@
+﻿@model MovieStore.Models.Domain.ShoppingCart
+@{
+    ViewData["Title"] = "GetUserCart";
+}
+
+
+
+
+<section class="container">
+    <div class="tbl-container">
+        @if (Model != null && Model.CartDetails != null && Model.CartDetails.Count > 0)
+        {
+            <h2>My Cart</h2>
+
+        <table>
+            <tr>
+                <th>Movie</th>
+                <th>Image</th>
+                <th>Genre</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+                <th>Action</th>
+            </tr>
+            @foreach (var item in Model.CartDetails)
+            {
+                <tr>
+                    <td>@item.Movie.Title</td>
+                    <td>
+                        @if (string.IsNullOrEmpty(item.Movie.MovieImage))
+                        {
+                            <img src="/images/noimage.png" style="width:80px;height:100px" />
+                        }
+                        else
+                        {
+                            <img src="/Uploads/@item.Movie.MovieImage" style="width:80px;height:100px" />
+                        }
+                    </td>
+                    <td>@item.Movie.GenreNames</td>
+                    <td>@item.Movie.Price X @item.Quantity</td>
+                    <td>@(item.Movie.Price * item.Quantity)</td>
+                    <td>
+                        
+                            <a href="/Cart/AddItem?movieId=@item.MovieId&qty=1&redirect=1">+   </a>
+                            <a href="/Cart/RemoveItem?movieId=@item.MovieId">-  </a>
+                    </td>
+                </tr>
+            }
+            
+        </table>
+        <div class="input-container">
+            <a href="/Home/Index" class="btn btn-sec">Back</a>
+        </div>
+        <div class="my-2">
+        <h5>Total(DH): </h5>
+        @(Model.CartDetails.Select(item => item.Movie.Price * item.Quantity).Sum())
+        </div>
+        }
+        else
+        {
+        <h5>Cart is empty</h5>
+        }
+
+    </div>
+</section>

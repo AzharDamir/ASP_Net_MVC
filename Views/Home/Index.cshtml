@@ -1,0 +1,53 @@
+﻿@model MovieStore.Models.DTO.MovieListVm
+@{
+    Layout = "_Layout";
+}
+<section class="search-bar">
+    <form method="get" asp-action="Index">
+        <input type="text" name="term" placeholder="search here">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        <a class="btn btn-default" href="/Home/Index">All</a>
+    </form>
+</section>
+<section class="movies">
+    @foreach(var movie in Model.MovieList){
+        <div class="movie-card" >
+            <div class="movie-image" onclick="window.location.href='/Home/MovieDetail?movieId=@movie.Id'">
+                <img src="/Uploads/@movie.MovieImage">
+            </div>
+            <div class="movie-info">
+                <h4>@movie.Title</h4>
+                <h4>@movie.GenreNames</h4>
+                <h4>Price : @movie.Price</h4>
+            </div>
+            @if (User.IsInRole("User"))
+            {
+                <div>
+                    <input type="number" id="qty_@movie.Id" value="1" min="1" /> <!-- Champ pour la quantité -->
+                    <button onclick="addToCart(@movie.Id)">Add to Cart</button> <!-- Bouton "Add to Cart" avec une fonction JavaScript associée -->
+                </div>
+            }
+    </div>
+    }
+</section>
+
+
+<script>
+
+    function addToCart(movieId) {
+        var quantity = document.getElementById('qty_' + movieId).value;
+        fetch(`/Cart/AddItem?movieId=${movieId}&qty=${quantity}`, {
+            method: 'POST'
+        }).then(response => {
+            if (response.ok) {
+                // Redirection vers la page du panier après l'ajout au panier
+                window.location.href = '/Cart/GetUserCart';
+            } else {
+                // Gérer les erreurs ou afficher un message d'erreur
+                console.error('Erreur lors de l\'ajout au panier');
+            }
+        }).catch(error => {
+            console.error('Erreur lors de l\'ajout au panier :', error);
+        });
+    }
+</script>

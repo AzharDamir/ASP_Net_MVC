@@ -1,0 +1,112 @@
+2023-12-16 02:05:30.472 +01:00 [INF] User profile is available. Using 'C:\Users\azhar damir\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-12-16 02:05:30.883 +01:00 [INF] Now listening on: https://localhost:7243
+2023-12-16 02:05:30.883 +01:00 [INF] Now listening on: http://localhost:5266
+2023-12-16 02:05:30.887 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-12-16 02:05:30.887 +01:00 [INF] Hosting environment: Development
+2023-12-16 02:05:30.887 +01:00 [INF] Content root path: C:\Users\azhar damir\OneDrive\Bureau\ILISI 3\aspNet\MovieStore\
+2023-12-16 02:05:32.606 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7243/ - -
+2023-12-16 02:05:34.124 +01:00 [INF] Executing endpoint 'MovieStore.Controllers.HomeController.Index (MovieStore)'
+2023-12-16 02:05:34.219 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String, Int32) on controller MovieStore.Controllers.HomeController (MovieStore).
+2023-12-16 02:05:36.578 +01:00 [INF] Entity Framework Core 6.0.25 initialized 'DBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.25' with options: None
+2023-12-16 02:05:37.406 +01:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "m"."Id", "m"."Cast", "m"."Director", "m"."MovieImage", "m"."Price", "m"."ReleaseYear", "m"."Title"
+FROM "Movies" AS "m"
+2023-12-16 02:05:38.379 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[@__movie_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "g"."GenreName"
+FROM "Genres" AS "g"
+INNER JOIN "MoviesGenres" AS "m" ON "g"."Id" = "m"."GenreId"
+WHERE "m"."MovieId" = @__movie_Id_0
+2023-12-16 02:05:38.391 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__movie_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "g"."GenreName"
+FROM "Genres" AS "g"
+INNER JOIN "MoviesGenres" AS "m" ON "g"."Id" = "m"."GenreId"
+WHERE "m"."MovieId" = @__movie_Id_0
+2023-12-16 02:05:38.392 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__movie_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "g"."GenreName"
+FROM "Genres" AS "g"
+INNER JOIN "MoviesGenres" AS "m" ON "g"."Id" = "m"."GenreId"
+WHERE "m"."MovieId" = @__movie_Id_0
+2023-12-16 02:05:38.418 +01:00 [INF] Executing ViewResult, running view Index.
+2023-12-16 02:05:38.913 +01:00 [INF] Executed ViewResult - view Index executed in 502.3308ms.
+2023-12-16 02:05:38.934 +01:00 [INF] Executed action MovieStore.Controllers.HomeController.Index (MovieStore) in 4713.6066ms
+2023-12-16 02:05:38.936 +01:00 [INF] Executed endpoint 'MovieStore.Controllers.HomeController.Index (MovieStore)'
+2023-12-16 02:05:39.164 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7243/ - - - 200 - text/html;+charset=utf-8 6565.7111ms
+2023-12-16 02:05:39.379 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7243/_vs/browserLink - -
+2023-12-16 02:05:39.379 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7243/_framework/aspnetcore-browser-refresh.js - -
+2023-12-16 02:05:39.399 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7243/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 19.9972ms
+2023-12-16 02:05:39.432 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7243/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 52.9233ms
+2023-12-16 02:05:43.882 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7243/Cart/AddItem?movieId=5&qty=1 - 0
+2023-12-16 02:05:43.953 +01:00 [INF] Executing endpoint 'MovieStore.Controllers.CartController.AddItem (MovieStore)'
+2023-12-16 02:05:43.983 +01:00 [INF] Route matched with {action = "AddItem", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddItem(Int32, Int32, Int32) on controller MovieStore.Controllers.CartController (MovieStore).
+2023-12-16 02:05:44.044 +01:00 [INF] add item id5 with quantity : 1
+2023-12-16 02:05:44.050 +01:00 [INF] Entity Framework Core 6.0.25 initialized 'DBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.25' with options: None
+2023-12-16 02:05:44.312 +01:00 [INF] Executed DbCommand (45ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "s"."Id", "s"."IsDeleted", "s"."UserId"
+FROM "ShoppingCarts" AS "s"
+WHERE "s"."UserId" = @__userId_0
+LIMIT 1
+2023-12-16 02:05:44.510 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cart_Id_0='?' (DbType = Int32), @__8__locals1_movieId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."MovieId", "c"."Quantity", "c"."ShoppingCartId", "c"."UnitPrice"
+FROM "CartDetails" AS "c"
+WHERE ("c"."ShoppingCartId" = @__cart_Id_0) AND ("c"."MovieId" = @__8__locals1_movieId_1)
+LIMIT 1
+2023-12-16 02:05:44.759 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "CartDetails" SET "Quantity" = @p0
+WHERE "Id" = @p1;
+SELECT changes();
+2023-12-16 02:05:44.827 +01:00 [INF] Executing RedirectResult, redirecting to /Cart/GetUserCart.
+2023-12-16 02:05:44.828 +01:00 [INF] Executed action MovieStore.Controllers.CartController.AddItem (MovieStore) in 844.54ms
+2023-12-16 02:05:44.828 +01:00 [INF] Executed endpoint 'MovieStore.Controllers.CartController.AddItem (MovieStore)'
+2023-12-16 02:05:44.829 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7243/Cart/AddItem?movieId=5&qty=1 - 0 - 302 0 - 947.2928ms
+2023-12-16 02:05:44.838 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7243/Cart/GetUserCart - -
+2023-12-16 02:05:44.930 +01:00 [INF] Executing endpoint 'MovieStore.Controllers.CartController.GetUserCart (MovieStore)'
+2023-12-16 02:05:44.938 +01:00 [INF] Route matched with {action = "GetUserCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserCart() on controller MovieStore.Controllers.CartController (MovieStore).
+2023-12-16 02:05:45.125 +01:00 [INF] Entity Framework Core 6.0.25 initialized 'DBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.25' with options: None
+2023-12-16 02:05:45.516 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."IsDeleted", "t"."UserId", "t0"."Id", "t0"."MovieId", "t0"."Quantity", "t0"."ShoppingCartId", "t0"."UnitPrice", "t0"."Id0", "t0"."Cast", "t0"."Director", "t0"."MovieImage", "t0"."Price", "t0"."ReleaseYear", "t0"."Title"
+FROM (
+    SELECT "s"."Id", "s"."IsDeleted", "s"."UserId"
+    FROM "ShoppingCarts" AS "s"
+    WHERE "s"."UserId" = @__userId_0
+    LIMIT 1
+) AS "t"
+LEFT JOIN (
+    SELECT "c"."Id", "c"."MovieId", "c"."Quantity", "c"."ShoppingCartId", "c"."UnitPrice", "m"."Id" AS "Id0", "m"."Cast", "m"."Director", "m"."MovieImage", "m"."Price", "m"."ReleaseYear", "m"."Title"
+    FROM "CartDetails" AS "c"
+    INNER JOIN "Movies" AS "m" ON "c"."MovieId" = "m"."Id"
+) AS "t0" ON "t"."Id" = "t0"."ShoppingCartId"
+ORDER BY "t"."Id", "t0"."Id"
+2023-12-16 02:05:45.543 +01:00 [INF] cart:MovieStore.Models.Domain.ShoppingCart
+2023-12-16 02:05:45.545 +01:00 [INF] Executing ViewResult, running view GetUserCart.
+2023-12-16 02:05:45.569 +01:00 [INF] Executed ViewResult - view GetUserCart executed in 24.5362ms.
+2023-12-16 02:05:45.569 +01:00 [INF] Executed action MovieStore.Controllers.CartController.GetUserCart (MovieStore) in 630.4778ms
+2023-12-16 02:05:45.569 +01:00 [INF] Executed endpoint 'MovieStore.Controllers.CartController.GetUserCart (MovieStore)'
+2023-12-16 02:05:45.570 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7243/Cart/GetUserCart - - - 200 - text/html;+charset=utf-8 731.9055ms
+2023-12-16 02:05:45.628 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7243/Cart/GetUserCart - -
+2023-12-16 02:05:45.633 +01:00 [INF] Executing endpoint 'MovieStore.Controllers.CartController.GetUserCart (MovieStore)'
+2023-12-16 02:05:45.634 +01:00 [INF] Route matched with {action = "GetUserCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserCart() on controller MovieStore.Controllers.CartController (MovieStore).
+2023-12-16 02:05:45.637 +01:00 [INF] Entity Framework Core 6.0.25 initialized 'DBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.25' with options: None
+2023-12-16 02:05:45.639 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."IsDeleted", "t"."UserId", "t0"."Id", "t0"."MovieId", "t0"."Quantity", "t0"."ShoppingCartId", "t0"."UnitPrice", "t0"."Id0", "t0"."Cast", "t0"."Director", "t0"."MovieImage", "t0"."Price", "t0"."ReleaseYear", "t0"."Title"
+FROM (
+    SELECT "s"."Id", "s"."IsDeleted", "s"."UserId"
+    FROM "ShoppingCarts" AS "s"
+    WHERE "s"."UserId" = @__userId_0
+    LIMIT 1
+) AS "t"
+LEFT JOIN (
+    SELECT "c"."Id", "c"."MovieId", "c"."Quantity", "c"."ShoppingCartId", "c"."UnitPrice", "m"."Id" AS "Id0", "m"."Cast", "m"."Director", "m"."MovieImage", "m"."Price", "m"."ReleaseYear", "m"."Title"
+    FROM "CartDetails" AS "c"
+    INNER JOIN "Movies" AS "m" ON "c"."MovieId" = "m"."Id"
+) AS "t0" ON "t"."Id" = "t0"."ShoppingCartId"
+ORDER BY "t"."Id", "t0"."Id"
+2023-12-16 02:05:45.640 +01:00 [INF] cart:MovieStore.Models.Domain.ShoppingCart
+2023-12-16 02:05:45.640 +01:00 [INF] Executing ViewResult, running view GetUserCart.
+2023-12-16 02:05:45.652 +01:00 [INF] Executed ViewResult - view GetUserCart executed in 11.6287ms.
+2023-12-16 02:05:45.652 +01:00 [INF] Executed action MovieStore.Controllers.CartController.GetUserCart (MovieStore) in 18.1688ms
+2023-12-16 02:05:45.652 +01:00 [INF] Executed endpoint 'MovieStore.Controllers.CartController.GetUserCart (MovieStore)'
+2023-12-16 02:05:45.664 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7243/Cart/GetUserCart - - - 200 - text/html;+charset=utf-8 35.8302ms
+2023-12-16 02:05:45.725 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7243/_framework/aspnetcore-browser-refresh.js - -
+2023-12-16 02:05:45.726 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7243/_vs/browserLink - -
+2023-12-16 02:05:45.728 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7243/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 2.2552ms
+2023-12-16 02:05:45.741 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7243/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 15.2469ms

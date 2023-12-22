@@ -1,0 +1,57 @@
+﻿@model MovieStore.Models.DTO.MovieListVm
+@{
+}
+@{
+    Layout = "_Layout";
+}
+<section class="search-bar">
+    <form method="get" asp-action="Index">
+        <input type="text" name="term" placeholder="search here">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        <a class="btn btn-default" href="/Home/MovieList">All</a>
+    </form>
+</section>
+<section class="movies">
+    @foreach (var movie in Model.MovieList)
+    {
+        <div class="movie-card" onclick="window.location.href='/Home/MovieDetail?movieId=@movie.Id'">
+            <div class="movie-image">
+                <img src="/Uploads/@movie.MovieImage">
+            </div>
+            <div class="movie-info">
+                <h5>@movie.Title</h5>
+                <h5>@movie.GenreNames</h5>
+                <h5>@movie.ReleaseYear</h5>
+                <h5>Cast : @movie.Cast</h5>
+            <h5>Director : @movie.Director</h5>
+            </div>
+              
+             <h5>
+                        <a href="/Movie/Edit?id=@movie.Id" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                        <a onclick="return window.confirm('Are you sure?')" href="/Movie/Delete?id=@movie.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+            </h5>
+             
+            
+        </div>
+       
+    }
+    
+</section>
+<div class="input-container">
+    <a href="/Movie/Add" class="btn btn-sec">Back</a>
+</div>
+<div class="pagination">
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        if (i == Model.CurrentPage)
+        {
+            <a href="/Home/Index?currentPage=@i&term=@Model.Term" class="active">@i</a>
+        }
+        else
+        {
+            <a href="/Home/Index?currentPage=@i&term=@Model.Term">@i</a>
+
+        }
+    }
+
+</div>
